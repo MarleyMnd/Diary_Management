@@ -10,7 +10,7 @@
 typedef struct s_d_cell
 {
     int value;
-    struct s_d_cell *pointer_array[MAX_SIZE]
+    struct s_d_cell *pointer_array[MAX_SIZE];
 } t_d_cell;
 
 t_d_cell *createCell(int, int);

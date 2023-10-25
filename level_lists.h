@@ -6,6 +6,7 @@
 #define DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H
 
 #include "level_cells.h"
+#define MAX_SIZE 50
 
 typedef struct s_d_list
 {
@@ -13,5 +14,9 @@ typedef struct s_d_list
 } t_d_list;
 
 t_d_list createList(int);
+
+void insertCellHead(t_d_list *, int, int, int);
+
+void printList(t_d_list, int);
 
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H
