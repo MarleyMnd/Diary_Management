@@ -16,23 +16,29 @@ t_d_list createList(int nb_max_head) {
     return my_ht_list;
 }
 
-void insertCellHead(t_d_list *level_list, int val, int cell_levels, int insertion_level) {
+
+void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
     t_d_cell *new_cell;
     new_cell = createCell(val, cell_levels);
 
-    if (level_list->head_array[insertion_level - 1] == NULL) {
-        level_list->head_array[insertion_level - 1] = new_cell;
-    } else {
-        t_d_cell *temp = level_list->head_array[insertion_level - 1];
-        level_list->head_array[insertion_level - 1] = new_cell;
-        new_cell->pointer_array[insertion_level - 1] = temp;
+    for (int i = 0; i < cell_levels; i++) {
+
+        if (level_list->head_array[i] == NULL) {
+            new_cell->pointer_array[i] = NULL;
+            level_list->head_array[i] = new_cell;
+        } else {
+            new_cell->pointer_array[i] = level_list->head_array[i];
+            level_list->head_array[i] = new_cell;
+        }
     }
 }
+
 
 void printList(t_d_list level_list, int max_level) {
 
     for (int i = 0; i < max_level; i++) {
         t_d_cell *temp = level_list.head_array[i];
+
         printf("[list head_%d @-]", i+1);
 
         while (temp != NULL) {

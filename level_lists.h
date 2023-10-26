@@ -15,7 +15,7 @@ typedef struct s_d_list
 
 t_d_list createList(int);
 
-void insertCellHead(t_d_list *, int, int, int);
+void insertCellHead(t_d_list *, int, int);
 
 void printList(t_d_list, int);
 
