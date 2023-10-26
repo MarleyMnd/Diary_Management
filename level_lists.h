@@ -17,6 +17,8 @@ t_d_list createList(int);
 
 void insertCellHead(t_d_list *, int, int);
 
-void printList(t_d_list, int);
+void printEntireList(t_d_list level_list, int max_level);
+
+void printSpecLevelList(t_d_list, int);
 
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

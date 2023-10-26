@@ -1,4 +1,5 @@
 #include "level_lists.h"
+#include <stdio.h>
 
 int main() {
     int max_list_level = 10;
@@ -9,7 +10,11 @@ int main() {
     insertCellHead(&level_list, /*value*/ 30, /*nb levels cell*/ 2);
     insertCellHead(&level_list, /*value*/ 40, /*nb levels cell*/ 1);
 
-    printList(level_list, max_list_level);
+    printEntireList(level_list, max_list_level);
+
+    printf("\n");
+
+    printSpecLevelList(level_list, 2);
 
     return 0;
 }

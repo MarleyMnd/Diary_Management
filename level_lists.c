@@ -34,7 +34,22 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
 }
 
 
-void printList(t_d_list level_list, int max_level) {
+void printSpecLevelList(t_d_list level_list, int level) {
+
+    t_d_cell *temp = level_list.head_array[level-1];
+
+    printf("[list head_%d @-]", level);
+
+    while (temp != NULL) {
+        printf("-->[ %d|@-]", temp->value);
+        temp = temp->pointer_array[level-1];
+    }
+
+    printf("--> NULL\n");
+}
+
+
+void printEntireList(t_d_list level_list, int max_level) {
 
     for (int i = 0; i < max_level; i++) {
         t_d_cell *temp = level_list.head_array[i];
