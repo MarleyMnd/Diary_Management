@@ -8,5 +8,7 @@ add_executable(Diary_Management_Project main.c
         level_cells.h
         level_lists.c
         level_lists.h
-        error.c
-        error.h)
+        colors.c
+        colors.h
+        color_management.c
+        color_management.h)
