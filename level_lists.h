@@ -21,4 +21,6 @@ void printEntireList(t_d_list level_list, int max_level);
 
 void printSpecLevelList(t_d_list, int);
 
+void insertCellAscendingOrder(t_d_list *, int, int, int);
+
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

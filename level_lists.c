@@ -3,6 +3,7 @@
 //
 
 #include "level_lists.h"
+#include "error.h"
 #include <stdio.h>
 
 t_d_list createList(int nb_max_head) {
@@ -29,6 +30,43 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
         } else {
             new_cell->pointer_array[i] = level_list->head_array[i];
             level_list->head_array[i] = new_cell;
+        }
+    }
+}
+
+
+void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
+
+    if (level_cell > list_levels) {
+        Color(12, 0);
+        printf("\nError: nb level of the cell > nb level of the list -> cannot insert the cell\n\n");
+        Color(15, 0);
+        return;
+    }
+
+    t_d_cell *new_cell;
+    new_cell = createCell(val, 1);
+
+    for (int i = 0; i < level_cell; i++) {
+
+        if (level_list->head_array[i] == NULL) {
+            new_cell->pointer_array[0] = NULL;
+            level_list->head_array[i] = new_cell;
+        } else {
+            t_d_cell *temp;
+            temp = level_list->head_array[i];
+
+            while (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value < val) {
+                temp = temp->pointer_array[i];
+            }
+
+            if (temp->value < val) {
+                new_cell->pointer_array[i] = temp->pointer_array[i];
+                temp->pointer_array[i] = new_cell;
+            } else {
+                new_cell->pointer_array[i] = temp;
+                level_list->head_array[i] = new_cell;
+            }
         }
     }
 }
