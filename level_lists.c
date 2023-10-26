@@ -3,7 +3,7 @@
 //
 
 #include "level_lists.h"
-#include "error.h"
+#include "color_management.h"
 #include <stdio.h>
 
 t_d_list createList(int nb_max_head) {
@@ -38,9 +38,9 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
 
     if (level_cell > list_levels) {
-        Color(12, 0);
-        printf("\nError: nb level of the cell > nb level of the list -> cannot insert the cell\n\n");
-        Color(15, 0);
+        ErrorColor();
+        printf("\n /!\\ Error: nb level of the cell (%d) > nb level of the list (%d)  -->  cannot insert the cell\n\n", level_cell, list_levels);
+        NormalColor();
         return;
     }
 

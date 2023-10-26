@@ -10,7 +10,7 @@ int main() {
     insertCellHead(&level_list, /*value*/ 20, /*nb levels cell*/ 2);
     insertCellHead(&level_list, /*value*/ 10, /*nb levels cell*/ 1);
 
-    insertCellAscendingOrder(&level_list, /*value*/ 25, /*number of level of the cell*/ 2,/*nb levels of list*/ max_list_level);
+    insertCellAscendingOrder(&level_list, /*value*/ 25, /*number of level of the cell*/ 4,/*nb levels of list*/ max_list_level);
 
     printEntireList(level_list, max_list_level);
 
