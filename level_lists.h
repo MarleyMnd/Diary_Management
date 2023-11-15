@@ -8,6 +8,11 @@
 #include "level_cells.h"
 #define MAX_SIZE 50
 
+/*
+ *
+ * LIST STRUCTURE
+ * ARGUMENTS : head array
+ */
 typedef struct s_d_list
 {
     t_d_cell *head_array[MAX_SIZE];

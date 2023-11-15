@@ -7,6 +7,11 @@
 
 #define MAX_SIZE 50
 
+/*
+ *
+ * CELL STRUCTURE
+ * ARGUMENTS : value | pointer array
+ */
 typedef struct s_d_cell
 {
     int value;
