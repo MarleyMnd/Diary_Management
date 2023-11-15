@@ -6,6 +6,11 @@
 #include "color_management.h"
 #include <stdio.h>
 
+/*
+ *
+ * CREATE A LIST with a number of heads
+ * PARAMETERS : number of heads
+ */
 t_d_list createList(int nb_max_head) {
 
     t_d_list my_ht_list;
@@ -17,7 +22,11 @@ t_d_list createList(int nb_max_head) {
     return my_ht_list;
 }
 
-
+/*
+ *
+ * INSERT A CELL AT THE HEAD OF THE LIST
+ * PARAMETERS : list | value | number of levels of the cell
+ */
 void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
     t_d_cell *new_cell;
     new_cell = createCell(val, cell_levels);
@@ -34,7 +43,11 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
     }
 }
 
-
+/*
+ *
+ * INSERT A CELL IN ASCENDING ORDER
+ * PARAMETERS : list | value | number of levels of the cell | number of levels of the list
+ */
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
 
     if (level_cell > list_levels) {
@@ -71,7 +84,11 @@ void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int
     }
 }
 
-
+/*
+ *
+ * PRINT A SPECIFIC LEVEL OF THE LIST
+ * PARAMETERS : list | level to print
+ */
 void printSpecLevelList(t_d_list level_list, int level) {
 
     t_d_cell *temp = level_list.head_array[level-1];
@@ -86,7 +103,11 @@ void printSpecLevelList(t_d_list level_list, int level) {
     printf("--> NULL\n");
 }
 
-
+/*
+ *
+ * PRINT THE ENTIRE LIST
+ * PARAMETERS : list | number of levels of the list
+ */
 void printEntireList(t_d_list level_list, int max_level) {
 
     for (int i = 0; i < max_level; i++) {

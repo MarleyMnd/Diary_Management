@@ -6,6 +6,11 @@
 #include <malloc.h>
 #include "level_cells.h"
 
+/*
+ *
+ * CREATE A CELL with a value and a number of levels
+ * PARAMETERS : value | number of levels
+ */
 t_d_cell *createCell(int val, int levels) {
 
     t_d_cell *new_cell;

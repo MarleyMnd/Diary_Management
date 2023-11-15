@@ -6,6 +6,12 @@
 #include <windows.h>
 
 /*
+ *
+ * SET THE COLOR OF THE TEXT AND THE BACKGROUND
+ * PARAMETERS : text color | background color
+ *
+ * --------------------------------------------
+ *
  * 0 : Black
  * 1 : Dark blue
  * 2 : Dark green

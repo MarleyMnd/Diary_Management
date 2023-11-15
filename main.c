@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int max_list_level = 10;
+    int max_list_level = 5;
     t_d_list level_list = createList(max_list_level);
 
     insertCellHead(&level_list, /*value*/ 40, /*nb levels cell*/ 4);
