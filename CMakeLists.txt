@@ -11,4 +11,6 @@ add_executable(Diary_Management_Project main.c
         colors.c
         colors.h
         color_management.c
-        color_management.h)
+        color_management.h
+        timer.c
+        timer.h)
