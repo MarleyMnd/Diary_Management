@@ -22,10 +22,12 @@ t_d_list createList(int);
 
 void insertCellHead(t_d_list *, int, int);
 
-void printEntireList(t_d_list level_list, int max_level);
+void printEntireList(t_d_list, int);
 
 void printSpecLevelList(t_d_list, int);
 
 void insertCellAscendingOrder(t_d_list *, int, int, int);
+
+int dichotomic_search(t_d_list, int, int, int);
 
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

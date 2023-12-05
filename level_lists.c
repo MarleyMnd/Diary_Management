@@ -123,3 +123,24 @@ void printEntireList(t_d_list level_list, int max_level) {
         printf("--> NULL\n");
     }
 }
+
+int dichotomic_search(t_d_list level_list, int val, int max_level, int number_cells) {
+
+    int level = max_level - 1;
+    t_d_cell *temp = level_list.head_array[level];
+
+    while ((temp != NULL) && (level != 0)) {
+        for (int i = level; i >= 0; i--) {
+            if (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value == val) {
+                return 1;
+            }
+            if (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value <= val) {
+                temp = temp->pointer_array[i];
+            } else if (temp->pointer_array[i] == NULL) {
+                level--;
+                temp = level_list.head_array[level];
+            }
+        }
+    }
+    return 0;
+}
