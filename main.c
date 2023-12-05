@@ -1,22 +1,35 @@
 #include "level_lists.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 
 int main() {
-    int max_list_level = 5;
+    srand(time(NULL));
+
+    int max_list_level;
+    printf("Enter the max number of levels of the list : ");
+    scanf("%d", &max_list_level);
+    printf("\n");
+
+    int NumberOfCells;
+    printf("Enter the number of cells of your level list : ");
+    scanf("%d", &NumberOfCells);
+    printf("\n");
+
     t_d_list level_list = createList(max_list_level);
 
-    insertCellHead(&level_list, /*value*/ 40, /*nb levels cell*/ 4);
-    insertCellHead(&level_list, /*value*/ 30, /*nb levels cell*/ 3);
-    insertCellHead(&level_list, /*value*/ 20, /*nb levels cell*/ 2);
-    insertCellHead(&level_list, /*value*/ 10, /*nb levels cell*/ 1);
+    int value_first_cell = rand() % 100;
+    insertCellHead(&level_list, /*value*/ value_first_cell, /*number of levels of the cell*/ rand() % max_list_level);
 
-    insertCellAscendingOrder(&level_list, /*value*/ 25, /*number of level of the cell*/ 4,/*nb levels of list*/ max_list_level);
+    for (int i = 1; i < NumberOfCells; i++) {
+        int value = rand() % 100;
+        insertCellAscendingOrder(&level_list, /*value*/ value, /*number of level of the cell*/ rand() % max_list_level, max_list_level);
+    }
 
     printEntireList(level_list, max_list_level);
 
     printf("\n");
-
-    printSpecLevelList(level_list, 1);
 
     return 0;
 }
