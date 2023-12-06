@@ -125,8 +125,15 @@ void printEntireList(t_d_list level_list, int max_level) {
     }
 }
 
+
+/*
+ *
+ * SIMPLE DICHOTOMIC SEARCH (first level only)
+ * PARAMETERS : list | value to search | number of cells of the list
+ */
 int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
 
+    // create a temporary pointer to
     t_d_cell *temp = level_list.head_array[0];
 
     for (int i = 0; i < number_cells; i++) {
@@ -145,6 +152,11 @@ int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
     return 0;
 }
 
+/*
+ *
+ * DICHOTOMIC SEARCH
+ * PARAMETERS : list | value to search | number of levels of the list | number of cells of the list
+ */
 int dichotomic_search(t_d_list level_list, int val, int max_level, int number_cells) {
 
     int level = max_level - 1;
