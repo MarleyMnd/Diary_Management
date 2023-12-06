@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "timer.h"
+#include "windows.h"
 
 /*
  * Test with random values
@@ -108,19 +109,27 @@ int main() {
 
     printEntireList(level_list, max_list_level);
 
+    startTimer();
     int is_found = dichotomic_search(level_list, 4, max_list_level, NumberOfCells);
+    stopTimer();
     if (is_found == 1) {
         printf("\n\nThe value is found.\n");
     } else {
         printf("\n\nThe value is not found.\n");
     }
+    printf("Time taken: ");
+    displayTime();
 
+    startTimer();
     int is_found2 = simple_dichotomic_search(level_list, 55, NumberOfCells);
+    stopTimer();
     if (is_found2 == 1) {
         printf("\nThe value is found in first line.\n");
     } else {
         printf("\nThe value is not found in first line.\n");
     }
+    printf("Time taken: ");
+    displayTime();
 
     return 0;
 }
