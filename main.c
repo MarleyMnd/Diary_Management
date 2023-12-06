@@ -24,7 +24,7 @@ int main() {
     t_d_list level_list = createList(max_list_level);
 
     // Create an array of random values + display
-    int values[1000] = {};
+    int values[3000] = {};
     srand(time(NULL));
     for (int i = 0; i < NumberOfCells; i++) {
         values[i] = (rand() % 100) + 1;
@@ -39,7 +39,7 @@ int main() {
     sleep(1);
 
     // Create an array of random number for the levels for the cells + display
-    int number_levels_cell[1000] = {};
+    int number_levels_cell[3000] = {};
     srand(time(NULL));
     for (int i = 0; i < NumberOfCells; i++) {
         number_levels_cell[i] = (rand() % max_list_level) + 1;
@@ -55,6 +55,8 @@ int main() {
     // Create the first cell of the list
     insertCellHead(&level_list, /*value*/ values[0], /*number of levels of the cell*/ number_levels_cell[0]);
 
+    printf("Head inserted.\n\n");
+
     // Change the seed of 'random' generation (based on time)
     sleep(1);
 
@@ -63,6 +65,9 @@ int main() {
         insertCellAscendingOrder(&level_list, /*value*/ values[j], /*number of level of the cell*/ number_levels_cell[i], max_list_level);
         j++;
     }
+    printf("Insertion finished.\n\n");
+
+    sleep(2);
 
     printEntireList(level_list, max_list_level);
 
