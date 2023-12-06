@@ -5,6 +5,7 @@
 #include "level_lists.h"
 #include "color_management.h"
 #include <stdio.h>
+#include "timer.h"
 
 /*
  *
@@ -124,8 +125,10 @@ void printEntireList(t_d_list level_list, int max_level) {
     }
 }
 
-int simple_dichotomic_search(t_d_list level_list, int val, int number_cells){
+int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
+
     t_d_cell *temp = level_list.head_array[0];
+
     for (int i = 0; i < number_cells; i++) {
         if (temp->value == val) {
             return 1;
