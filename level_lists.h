@@ -28,6 +28,8 @@ void printSpecLevelList(t_d_list, int);
 
 void insertCellAscendingOrder(t_d_list *, int, int, int);
 
+int simple_dichotomic_search(t_d_list, int, int);
+
 int dichotomic_search(t_d_list, int, int, int);
 
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

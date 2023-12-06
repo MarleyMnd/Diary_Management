@@ -65,7 +65,7 @@
  * main 2 : test with predefined values
  */
 int main() {
-    int max_list_level = 3;
+    int max_list_level = 4;
     int NumberOfCells = pow(2,max_list_level) - 1;
     printf("Number of cells : %d\n\n", NumberOfCells);
 
@@ -82,7 +82,7 @@ int main() {
     insertCellHead(&level_list, /*value*/ values[0], /*number of levels of the cell*/ number_levels_first_cell);
 
     int j = 1;
-    int number_levels_cell[100] = {3, 1, 3, 1, 1, 1, 2, 3, 2, 4, 3, 2, 4, 5, 4, 4, 3, 3, 3, 3};
+    int number_levels_cell[100] = {3, 1, 3, 1, 1, 1, 2, 3, 2, 4, 3, 2, 4, 3, 4, 4, 3, 3, 3, 3};
     printf("Number of levels of the cells :");
     for (int i = 0; i < NumberOfCells; i++) {
         printf("[%d]  ", number_levels_cell[i]);
@@ -98,12 +98,18 @@ int main() {
 
     printf("\n");
 
-     int is_found = dichotomic_search(level_list, 75, max_list_level, NumberOfCells);
+     int is_found = dichotomic_search(level_list, -98, max_list_level, NumberOfCells);
+     int is_found2 = simple_dichotomic_search(level_list, -98, NumberOfCells);
      if (is_found == 1) {
         printf("\n\nThe value is found.\n");
      } else {
         printf("\n\nThe value is not found.\n");
      }
+    if (is_found2 == 1) {
+        printf("\n\nThe value is found in first line.\n");
+    } else {
+        printf("\n\nThe value is not found in first line.\n");
+    }
 
     return 0;
 }

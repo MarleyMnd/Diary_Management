@@ -124,21 +124,53 @@ void printEntireList(t_d_list level_list, int max_level) {
     }
 }
 
+int simple_dichotomic_search(t_d_list level_list, int val, int number_cells){
+    t_d_cell *temp = level_list.head_array[0];
+    for (int i = 0; i < number_cells; i++) {
+        if (temp->value == val) {
+            return 1;
+        }
+        if (temp->value < val) {
+            if (temp->pointer_array[0] == NULL) {
+                return 0;
+            }
+            temp = temp->pointer_array[0];
+        } else if (temp->value > val) {
+            return 0;
+        }
+    }
+    return 0;
+}
+
 int dichotomic_search(t_d_list level_list, int val, int max_level, int number_cells) {
 
     int level = max_level - 1;
     t_d_cell *temp = level_list.head_array[level];
 
-    while ((temp != NULL) && (level != 0)) {
-        for (int i = level; i >= 0; i--) {
-            if (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value == val) {
-                return 1;
-            }
-            if (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value <= val) {
-                temp = temp->pointer_array[i];
-            } else if (temp->pointer_array[i] == NULL) {
-                level--;
+    for (int i = 0; i < number_cells; i++) {
+        if (temp->value == val) {
+            return 1;
+        }
+        if (temp->value < val) {
+            if (temp->pointer_array[level] == NULL) {
+                level --;
+                if (level < 0) {
+                    return 0;
+                }
                 temp = level_list.head_array[level];
+                for (int j = i; j>=0; j--) {
+                    temp = temp->pointer_array[level];
+                }
+            }
+            temp = temp->pointer_array[level];
+        } else if (temp->value > val) {
+            level--;
+            if (level < 0) {
+                return 0;
+            }
+            temp = level_list.head_array[level];
+            for (int j = i; j>=0; j--) {
+                temp = temp->pointer_array[level];
             }
         }
     }
