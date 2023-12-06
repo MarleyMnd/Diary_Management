@@ -106,7 +106,6 @@ int main() {
         insertCellAscendingOrder(&level_list, /*value*/ values[j], /*number of level of the cell*/ number_levels_cell[i], max_list_level);
         j++;
     }
-
     printEntireList(level_list, max_list_level);
 
     startTimer();
