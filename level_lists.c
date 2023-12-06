@@ -5,7 +5,6 @@
 #include "level_lists.h"
 #include "color_management.h"
 #include <stdio.h>
-#include "timer.h"
 
 /*
  *
