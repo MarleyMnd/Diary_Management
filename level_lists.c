@@ -51,6 +51,7 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
  */
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
 
+    // Error management
     if (level_cell > list_levels) {
         ErrorColor();
         printf("\n /!\\ Error: nb level of the cell (%d) > nb level of the list (%d)  -->  cannot insert the cell\n\n", level_cell, list_levels);
