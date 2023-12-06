@@ -111,6 +111,7 @@ int main() {
 
     startTimer();
     int is_found = dichotomic_search(level_list, 4, max_list_level, NumberOfCells);
+    sleep(1);
     stopTimer();
     if (is_found == 1) {
         printf("\n\nThe value is found.\n");
@@ -122,6 +123,7 @@ int main() {
 
     startTimer();
     int is_found2 = simple_dichotomic_search(level_list, 55, NumberOfCells);
+    sleep(1);
     stopTimer();
     if (is_found2 == 1) {
         printf("\nThe value is found in first line.\n");
