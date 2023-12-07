@@ -49,7 +49,6 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
  * PARAMETERS : list | value | number of levels of the cell | number of levels of the list
  */
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
-
     // Error management
     if (level_cell > list_levels) {
         ErrorColor();
@@ -58,30 +57,17 @@ void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int
         return;
     }
 
-    t_d_cell *new_cell;
-    new_cell = createCell(val, level_cell);
+    t_d_cell *new_cell = createCell(val, 1);
 
     for (int i = 0; i < level_cell; i++) {
+        t_d_cell **current_head = &(level_list->head_array[i]);
 
-        if (level_list->head_array[i] == NULL) {
-            new_cell->pointer_array[0] = NULL;
-            level_list->head_array[i] = new_cell;
-        } else {
-            t_d_cell *temp;
-            temp = level_list->head_array[i];
-
-            while (temp->pointer_array[i] != NULL && temp->pointer_array[i]->value < val) {
-                temp = temp->pointer_array[i];
-            }
-
-            if (temp->value < val) {
-                new_cell->pointer_array[i] = temp->pointer_array[i];
-                temp->pointer_array[i] = new_cell;
-            } else {
-                new_cell->pointer_array[i] = temp;
-                level_list->head_array[i] = new_cell;
-            }
+        while (*current_head != NULL && (*current_head)->value < val) {
+            current_head = &((*current_head)->pointer_array[i]);
         }
+
+        new_cell->pointer_array[i] = *current_head;
+        *current_head = new_cell;
     }
 }
 
