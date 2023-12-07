@@ -59,7 +59,7 @@ void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int
     }
 
     t_d_cell *new_cell;
-    new_cell = createCell(val, 1);
+    new_cell = createCell(val, level_cell);
 
     for (int i = 0; i < level_cell; i++) {
 
@@ -132,23 +132,20 @@ void printEntireList(t_d_list level_list, int max_level) {
  * PARAMETERS : list | value to search | number of cells of the list
  */
 int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
-
-    // create a temporary pointer to
     t_d_cell *temp = level_list.head_array[0];
 
-    for (int i = 0; i < number_cells; i++) {
+    while (temp != NULL) {
         if (temp->value == val) {
             return 1;
         }
+
         if (temp->value < val) {
-            if (temp->pointer_array[0] == NULL) {
-                return 0;
-            }
             temp = temp->pointer_array[0];
-        } else if (temp->value > val) {
+        } else {
             return 0;
         }
     }
+
     return 0;
 }
 
@@ -158,36 +155,26 @@ int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
  * PARAMETERS : list | value to search | number of levels of the list | number of cells of the list
  */
 int dichotomic_search(t_d_list level_list, int val, int max_level, int number_cells) {
-
     int level = max_level - 1;
     t_d_cell *temp = level_list.head_array[level];
 
-    for (int i = 0; i < number_cells; i++) {
+    for (int i = 0; i < number_cells && temp != NULL; i++) {
         if (temp->value == val) {
             return 1;
         }
-        if (temp->value < val) {
-            if (temp->pointer_array[level] == NULL) {
-                level --;
-                if (level < 0) {
-                    return 0;
-                }
-                temp = level_list.head_array[level];
-                for (int j = i; j>=0; j--) {
-                    temp = temp->pointer_array[level];
-                }
-            }
+
+        while (temp->pointer_array[level] != NULL && temp->pointer_array[level]->value < val) {
             temp = temp->pointer_array[level];
-        } else if (temp->value > val) {
-            level--;
-            if (level < 0) {
-                return 0;
-            }
-            temp = level_list.head_array[level];
-            for (int j = i; j>=0; j--) {
-                temp = temp->pointer_array[level];
-            }
         }
+
+        level--;
+
+        if (level < 0) {
+            return 0;
+        }
+
+        temp = temp->pointer_array[level];
     }
+
     return 0;
 }
