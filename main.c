@@ -4,9 +4,6 @@
 #include "timer.h"
 #include <unistd.h>
 
-/*
- * Test with predefined values
- */
 int main() {
     // Choose maximum depth of the list
     int max_list_level;

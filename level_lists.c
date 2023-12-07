@@ -107,7 +107,10 @@ void printEntireList(t_d_list level_list, int max_level) {
 
     // Display the value of each cell of each level until the end of the list, for each level
     for (int i = 0; i < max_level; i++) {
-        t_d_cell *temp = level_list.head_array[i];
+
+        printSpecLevelList(level_list, i+1);
+
+        /*t_d_cell *temp = level_list.head_array[i];
 
         // Display the beginning of level i
         printf("[list head_%d @-]", i+1);
@@ -119,7 +122,7 @@ void printEntireList(t_d_list level_list, int max_level) {
         }
 
         // Display the end of level i
-        printf("--> NULL\n");
+        printf("--> NULL\n");*/
     }
 }
 

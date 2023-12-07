@@ -24,7 +24,7 @@ void insertCellHead(t_d_list *, int, int);
 
 void printEntireList(t_d_list, int);
 
-void printSpecLevelList(t_d_list, int);
+void printSpecLevelList(t_d_list, int);     // Unused (prefer printEntireList function)
 
 void insertCellAscendingOrder(t_d_list *, int, int, int);
 
