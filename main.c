@@ -26,9 +26,6 @@ int main() {
         values[i] = i;
     }
 
-    // Change the seed of 'random' generation (based on time)
-    sleep(1);
-
     // Create an array of random number for the levels for the cells + display
     int number_levels_cell[80000] = {};
     for (int i = 0; i < NumberOfCells; i++) {
@@ -58,9 +55,6 @@ int main() {
 
     printf("Head inserted.\n\n");
 
-    // Change the seed of 'random' generation (based on time)
-    sleep(1);
-
     int j = 1;
     for (int i = 1; i < NumberOfCells; i++) {
         insertCellAscendingOrder(&level_list, /*value*/ values[j]+1, /*number of level of the cell*/ number_levels_cell[i]+1, max_list_level);
@@ -68,32 +62,32 @@ int main() {
     }
     printf("Insertion finished.\n\n");
 
-    sleep(2);
+    sleep(1);
 
     printEntireList(level_list, max_list_level);
 
     startTimer();
-    int is_found = dichotomic_search(level_list, 8, max_list_level, NumberOfCells);
+    int is_found = dichotomic_search(level_list, 3, max_list_level, NumberOfCells);
     sleep(1);
     stopTimer();
 
     if (is_found == 1) {
-        printf("\n\nThe value is found.\n");
+        printf("\n\nDichotomic search : The value is found.\n");
     } else {
-        printf("\n\nThe value is not found.\n");
+        printf("\n\nDichotomic search : The value is not found.\n");
     }
     printf("Time taken: ");
     displayTime();
 
     startTimer();
-    int is_found2 = simple_search(level_list, 12, NumberOfCells);
+    int is_found2 = simple_search(level_list, 3, NumberOfCells);
     sleep(1);
     stopTimer();
 
     if (is_found2 == 1) {
-        printf("\nThe value is found in first line.\n");
+        printf("\nSimple search : The value is found in first line.\n");
     } else {
-        printf("\nThe value is not found in first line.\n");
+        printf("\nSimple search : The value is not found in first line.\n");
     }
     printf("Time taken: ");
 

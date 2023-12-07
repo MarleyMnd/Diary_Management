@@ -15,6 +15,7 @@ t_d_list createList(int nb_max_head) {
 
     t_d_list my_ht_list;
 
+    // Initialize the array containing the heads (1 per level)
     for (int i = 0; i < nb_max_head; i++) {
         my_ht_list.head_array[i] = NULL;
     }
@@ -28,9 +29,11 @@ t_d_list createList(int nb_max_head) {
  * PARAMETERS : list | value | number of levels of the cell
  */
 void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
+    // Create a temporary pointer of type cell
     t_d_cell *new_cell;
     new_cell = createCell(val, cell_levels);
 
+    // Insert the cell at the head of the list taking into account the number of levels
     for (int i = 0; i < cell_levels; i++) {
 
         if (level_list->head_array[i] == NULL) {
@@ -57,15 +60,19 @@ void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int
         return;
     }
 
-    t_d_cell *new_cell = createCell(val, 1);
+    // Create a temporary pointer of type cell
+    t_d_cell *new_cell = createCell(val, level_cell);
 
+    // For each level of the cell, we associate the pointer of the previous cell to the new cell
     for (int i = 0; i < level_cell; i++) {
         t_d_cell **current_head = &(level_list->head_array[i]);
 
+        // As long as we did not reach the right position, we move forward in the list
         while (*current_head != NULL && (*current_head)->value < val) {
             current_head = &((*current_head)->pointer_array[i]);
         }
 
+        // Inserting the cell
         new_cell->pointer_array[i] = *current_head;
         *current_head = new_cell;
     }
@@ -82,6 +89,7 @@ void printSpecLevelList(t_d_list level_list, int level) {
 
     printf("[list head_%d @-]", level);
 
+    // Display the value of each cell of the level until the end of the list
     while (temp != NULL) {
         printf("-->[ %d|@-]", temp->value);
         temp = temp->pointer_array[level-1];
@@ -97,16 +105,20 @@ void printSpecLevelList(t_d_list level_list, int level) {
  */
 void printEntireList(t_d_list level_list, int max_level) {
 
+    // Display the value of each cell of each level until the end of the list, for each level
     for (int i = 0; i < max_level; i++) {
         t_d_cell *temp = level_list.head_array[i];
 
+        // Display the beginning of level i
         printf("[list head_%d @-]", i+1);
 
+        // Display the values
         while (temp != NULL) {
             printf("-->[ %d|@-]", temp->value);
             temp = temp->pointer_array[i];
         }
 
+        // Display the end of level i
         printf("--> NULL\n");
     }
 }
@@ -114,20 +126,18 @@ void printEntireList(t_d_list level_list, int max_level) {
 
 /*
  *
- * SIMPLE DICHOTOMIC SEARCH (first level only)
+ * SIMPLE SEARCH (first level only)
  * PARAMETERS : list | value to search | number of cells of the list
  */
 int simple_search(t_d_list level_list, int val, int number_cells) {
     t_d_cell *temp = level_list.head_array[0];
 
     while (temp != NULL) {
-        if (temp->value == val) {
+        if (temp->value == val) {           // The value is found
             return 1;
-        }
-
-        if (temp->value < val) {
+        } else if (temp->value < val) {     // Did not reach the value yet (still smaller)
             temp = temp->pointer_array[0];
-        } else {
+        } else {                            // Value not found in the list
             return 0;
         }
     }
@@ -145,6 +155,7 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
     t_d_cell *temp = level_list.head_array[level];
 
     for (int i = 0; i < number_cells && temp != NULL; i++) {
+
         if (temp->value == val) {
             return 1;
         }
