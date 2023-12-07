@@ -131,7 +131,7 @@ void printEntireList(t_d_list level_list, int max_level) {
  * SIMPLE DICHOTOMIC SEARCH (first level only)
  * PARAMETERS : list | value to search | number of cells of the list
  */
-int simple_dichotomic_search(t_d_list level_list, int val, int number_cells) {
+int simple_search(t_d_list level_list, int val, int number_cells) {
     t_d_cell *temp = level_list.head_array[0];
 
     while (temp != NULL) {

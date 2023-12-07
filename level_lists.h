@@ -28,7 +28,7 @@ void printSpecLevelList(t_d_list, int);
 
 void insertCellAscendingOrder(t_d_list *, int, int, int);
 
-int simple_dichotomic_search(t_d_list, int, int);
+int simple_search(t_d_list level_list, int val, int number_cells);
 
 int dichotomic_search(t_d_list, int, int, int);
 

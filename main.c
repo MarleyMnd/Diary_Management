@@ -21,7 +21,7 @@ int main() {
     t_d_list level_list = createList(max_list_level);
 
     // Create an array of random values + display
-    int values[3000] = {};
+    int values[80000] = {};
     for (int i = 0; i < NumberOfCells; i++) {
         values[i] = i;
     }
@@ -30,7 +30,7 @@ int main() {
     sleep(1);
 
     // Create an array of random number for the levels for the cells + display
-    int number_levels_cell[3000] = {};
+    int number_levels_cell[80000] = {};
     for (int i = 0; i < NumberOfCells; i++) {
         number_levels_cell[i] = 0;
     }
@@ -43,15 +43,15 @@ int main() {
     }
 
     sleep(1);
-    printf("Values of the list :");
-    for (int i = 0; i < NumberOfCells; i++) {
-        printf("[%d]  ", values[i]);
-    }
-    printf("\n\nLevels :");
-    for (int i = 0; i < NumberOfCells; i++) {
-        printf("[%d]  ", number_levels_cell[i]);
-    }
-    printf("\n\n");
+    // printf("Values of the list :");
+    // for (int i = 0; i < NumberOfCells; i++) {
+    //     printf("[%d]  ", values[i]);
+    // }
+    // printf("\n\nLevels :");
+    // for (int i = 0; i < NumberOfCells; i++) {
+    //     printf("[%d]  ", number_levels_cell[i]);
+    // }
+    // printf("\n\n");
 
     // Create the first cell of the list
     insertCellHead(&level_list, /*value*/ values[0]+1, /*number of levels of the cell*/ number_levels_cell[0]+1);
@@ -63,7 +63,7 @@ int main() {
 
     int j = 1;
     for (int i = 1; i < NumberOfCells; i++) {
-        insertCellAscendingOrder(&level_list, /*value*/ values[j], /*number of level of the cell*/ number_levels_cell[i]+1, max_list_level);
+        insertCellAscendingOrder(&level_list, /*value*/ values[j]+1, /*number of level of the cell*/ number_levels_cell[i]+1, max_list_level);
         j++;
     }
     printf("Insertion finished.\n\n");
@@ -86,7 +86,7 @@ int main() {
     displayTime();
 
     startTimer();
-    int is_found2 = simple_dichotomic_search(level_list, 12, NumberOfCells);
+    int is_found2 = simple_search(level_list, 12, NumberOfCells);
     sleep(1);
     stopTimer();
 
