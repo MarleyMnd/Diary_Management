@@ -24,7 +24,7 @@ int main() {
     t_d_list level_list = createList(max_list_level);
 
     // Create an array of random values + display
-    int values[3000] = {};
+    int values[4095] = {};
     srand(time(NULL));
     for (int i = 0; i < NumberOfCells; i++) {
         values[i] = (rand() % 100) + 1;
@@ -72,7 +72,7 @@ int main() {
     printEntireList(level_list, max_list_level);
 
     startTimer();
-    int is_found = dichotomic_search(level_list, 6, max_list_level, NumberOfCells);
+    int is_found = dichotomic_search(level_list, 77, max_list_level, NumberOfCells);
     sleep(1);
     stopTimer();
 
@@ -85,7 +85,7 @@ int main() {
     displayTime();
 
     startTimer();
-    int is_found2 = simple_dichotomic_search(level_list, 55, NumberOfCells);
+    int is_found2 = simple_dichotomic_search(level_list, 77, NumberOfCells);
     sleep(1);
     stopTimer();
 
