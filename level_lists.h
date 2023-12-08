@@ -32,4 +32,6 @@ int simple_search(t_d_list level_list, int val, int number_cells);
 
 int dichotomic_search(t_d_list, int, int, int);
 
+void printAlignedList(t_d_list, int);
+
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

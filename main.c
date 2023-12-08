@@ -17,13 +17,13 @@ int main() {
     // Create the list (empty)
     t_d_list level_list = createList(max_list_level);
 
-    // Create an array of random values + display
+    // Create an array of random values
     int values[80000] = {};
     for (int i = 0; i < NumberOfCells; i++) {
         values[i] = i;
     }
 
-    // Create an array of random number for the levels for the cells + display
+    // Create an array of random number for the levels for the cells
     int number_levels_cell[80000] = {};
     for (int i = 0; i < NumberOfCells; i++) {
         number_levels_cell[i] = 0;
@@ -61,10 +61,17 @@ int main() {
 
     sleep(1);
 
+    printf("Not aligned format :\n");
     printEntireList(level_list, max_list_level);
 
+    printf("\n\n");
+
+    printf("Aligned format :\n");
+    printAlignedList(level_list, max_list_level);
+
+    int ValueToFind = 100;
     startTimer();
-    int is_found = dichotomic_search(level_list, 3, max_list_level, NumberOfCells);
+    int is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
     sleep(1);
     stopTimer();
 
@@ -77,7 +84,7 @@ int main() {
     displayTime();
 
     startTimer();
-    int is_found2 = simple_search(level_list, 3, NumberOfCells);
+    int is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
     sleep(1);
     stopTimer();
 

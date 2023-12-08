@@ -5,6 +5,7 @@
 #include "level_lists.h"
 #include "color_management.h"
 #include <stdio.h>
+#include <math.h>
 
 /*
  *
@@ -159,15 +160,17 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
 
     for (int i = 0; i < number_cells && temp != NULL; i++) {
 
+        while (temp->pointer_array[level] != NULL && temp->value < val) {
+            temp = temp->pointer_array[level];
+        }
+
+
         if (temp->value == val) {
             return 1;
         }
 
-        while (temp->pointer_array[level] != NULL && temp->pointer_array[level]->value < val) {
-            temp = temp->pointer_array[level];
-        }
-
         level--;
+        temp = level_list.head_array[level];
 
         if (level < 0) {
             return 0;
@@ -177,4 +180,32 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
     }
 
     return 0;
+}
+
+
+void printAlignedList(t_d_list level_list, int max_level) {
+    int tot_values = pow(2, max_level-1)-1;
+    for (int level = 0; level < max_level; level++) {
+        t_d_cell *temp = level_list.head_array[level];
+        t_d_cell *temp0 = level_list.head_array[0];
+
+        printf("[list head_%d @-]", level + 1);
+        int j = 0;
+        while (temp != NULL) {
+            while (level != 0 && temp->value != temp0->value){
+                temp0 = temp0->pointer_array[0];
+                printf("----------");
+            }
+            printf("-->[ %d|@-]", temp->value);
+            temp = temp->pointer_array[level];
+            temp0 = temp0->pointer_array[0];
+            j++;
+        }
+        if (j <= tot_values){
+            for (int k = j; k <= tot_values; k++){
+                printf("----------");
+            }
+        }
+        printf("--> NULL\n");
+    }
 }
