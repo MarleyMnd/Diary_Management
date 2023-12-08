@@ -22,6 +22,10 @@ t_d_cell *createCell(int, int);
 
 int *initialize_array_values(int);
 
+void display_array_values(int*, int);
+
 int *initialize_array_levels(int);
+
+void display_array_levels(int*, int);
 
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_CELLS_H

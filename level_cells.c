@@ -43,6 +43,18 @@ int *initialize_array_values(int NumberOfCells) {
 
 /*
  *
+ * DISPLAY ARRAY OF VALUES
+ * PARAMETERS : array of values | number of cells
+ */
+void display_array_values(int *values, int NumberOfCells) {
+    printf("Values of the list :");
+    for (int i = 0; i < NumberOfCells; i++) {
+        printf("[%d]  ", values[i]+1);
+    }
+}
+
+/*
+ *
  * INITIALIZE ARRAY OF LEVELS
  * PARAMETERS : number of cells
  */
@@ -65,4 +77,11 @@ int *initialize_array_levels(int NumberOfCells) {
     }
 
     return number_levels_cell;
+}
+
+void display_array_levels(int *number_levels_cell, int NumberOfCells) {
+    printf("\n\nLevels :");
+    for (int i = 0; i < NumberOfCells; i++) {
+        printf("[%d]  ", number_levels_cell[i]);
+    }
 }
