@@ -50,6 +50,7 @@ int main() {
 
     sleep(1);
 
+    // Choose the format of the list to display (none, aligned, not aligned)
     int print_option;
     printf("Formats : \n0. Do not display the list \n1. Aligned \n2. Not aligned\n");
     scanf("%d", &print_option);
@@ -71,7 +72,9 @@ int main() {
     printf("Enter the value to find :");
     scanf("%d", &ValueToFind);
 
-    int nb_search = 1000000;                          // Number of searches to perform
+    int nb_search;                          // Number of searches to perform
+    printf("Number of searches to perform :\n");
+    scanf("%d", &nb_search);
 
     test_dichotomy(level_list, ValueToFind, max_list_level, nb_search);
 
