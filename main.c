@@ -72,13 +72,22 @@ int main() {
     printf("Enter the value to find :");
     scanf("%d", &ValueToFind);
 
-    int nb_search;                          // Number of searches to perform
-    printf("Number of searches to perform :\n");
-    scanf("%d", &nb_search);
+    // Choose the number of searches to perform
+    int nb_search1, nb_search2, nb_search3;
+    printf("Number of searches to perform (first, second, third attempt) :\n");
+    scanf("%d %d %d", &nb_search1, &nb_search2, &nb_search3);
 
-    test_dichotomy(level_list, ValueToFind, max_list_level, nb_search);
+    // First attempt
+    test_dichotomy(level_list, ValueToFind, max_list_level, nb_search1);
+    test_simple_search(level_list, ValueToFind, max_list_level, nb_search1);
 
-    test_simple_search(level_list, ValueToFind, max_list_level, nb_search);
+    // Second attempt
+    test_dichotomy(level_list, ValueToFind, max_list_level, nb_search2);
+    test_simple_search(level_list, ValueToFind, max_list_level, nb_search2);
+
+    // Third attempt
+    test_dichotomy(level_list, ValueToFind, max_list_level, nb_search3);
+    test_simple_search(level_list, ValueToFind, max_list_level, nb_search3);
 
     return 0;
 }
