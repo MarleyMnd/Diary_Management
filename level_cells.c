@@ -79,6 +79,11 @@ int *initialize_array_levels(int NumberOfCells) {
     return number_levels_cell;
 }
 
+/*
+ *
+ * DISPLAY ARRAY OF LEVELS
+ * PARAMETERS : array of levels | number of cells
+ */
 void display_array_levels(int *number_levels_cell, int NumberOfCells) {
     printf("\n\nLevels :");
     for (int i = 0; i < NumberOfCells; i++) {

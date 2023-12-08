@@ -25,16 +25,21 @@ int main() {
 
     sleep(1);
 
-    // Display the values and the levels of the cells
-    // display_array_values(values, NumberOfCells);
-    // display_array_levels(number_levels_cell, NumberOfCells);
+    // Display the values and the levels of the cells if the user wants
+    int display_arrays;
+    printf("Display arrays (value / level) ? (1/0)\n");
+    scanf("%d", &display_arrays);
+    if (display_arrays == 1) {
+        display_array_values(values, NumberOfCells);
+        display_array_levels(number_levels_cell, NumberOfCells);
+    }
 
-    printf("\n\n");
+    printf("\n");
 
     // Create + insert the first cell of the list
     insertCellHead(&level_list, /*value*/ values[0]+1, /*number of levels of the cell*/ number_levels_cell[0]+1);
 
-    printf("Head inserted.\n\n");
+    printf("Head inserted.\n");
 
     for (int i = 1; i < NumberOfCells; i++) {
         insertCellAscendingOrder(&level_list, /*value*/ values[i]+1, /*number of level of the cell*/ number_levels_cell[i]+1, max_list_level);
@@ -43,13 +48,20 @@ int main() {
 
     sleep(1);
 
-    /*printf("Not aligned format :\n");
-    printEntireList(level_list, max_list_level);
+    int print_option;
+    printf("Formats : \n1. Aligned \n2. Not aligned\n");
+    scanf("%d", &print_option);
+    printf("\n");
+    if (print_option != 1 && print_option != 2) {
+        printf("Wrong input. Default format : aligned.\n");
+        printAlignedList(level_list, max_list_level);
+    } else if (print_option == 1) {
+        printAlignedList(level_list, max_list_level);
+    } else if (print_option == 2) {
+        printEntireList(level_list, max_list_level);
+    }
 
     printf("\n\n");
-
-    printf("Aligned format :\n");
-    printAlignedList(level_list, max_list_level);*/
 
     int ValueToFind;
     printf("Enter the value to find :");
