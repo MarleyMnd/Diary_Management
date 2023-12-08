@@ -51,8 +51,6 @@ int main() {
     }
     printf("Insertion finished.\n\n");
 
-    sleep(1);
-
     // Choose the format of the list to display (none, aligned, not aligned)
     int print_option;
     printf("Formats : \n");
@@ -95,15 +93,15 @@ int main() {
 
     // First attempt
     test_dichotomy(level_list, ValueToFind, max_list_level, nb_search1);
-    test_simple_search(level_list, ValueToFind, max_list_level, nb_search1);
+    test_simple_search(level_list, ValueToFind, nb_search1);
 
     // Second attempt
     test_dichotomy(level_list, ValueToFind, max_list_level, nb_search2);
-    test_simple_search(level_list, ValueToFind, max_list_level, nb_search2);
+    test_simple_search(level_list, ValueToFind, nb_search2);
 
     // Third attempt
     test_dichotomy(level_list, ValueToFind, max_list_level, nb_search3);
-    test_simple_search(level_list, ValueToFind, max_list_level, nb_search3);
+    test_simple_search(level_list, ValueToFind, nb_search3);
 
     return 0;
 }

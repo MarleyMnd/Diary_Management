@@ -119,7 +119,7 @@ void printEntireList(t_d_list level_list, int max_level) {
  * SIMPLE SEARCH (first level only)
  * PARAMETERS : list | value to search | number of cells of the list
  */
-int simple_search(t_d_list level_list, int val, int number_cells) {
+int simple_search(t_d_list level_list, int val) {
     t_d_cell *temp = level_list.head_array[0];
 
     while (temp != NULL) {
@@ -229,14 +229,13 @@ void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, in
 /*
  *
  * TEST SIMPLE SEARCH
- * PARAMETERS : list | value to search | number of levels of the list | number of searches
+ * PARAMETERS : list | value to search | number of searches
  */
-void test_simple_search(t_d_list level_list, int ValueToFind, int max_list_level, int nb_search) {
+void test_simple_search(t_d_list level_list, int ValueToFind, int nb_search) {
     int is_found2;
-    int NumberOfCells = pow(2, max_list_level) - 1;
     startTimer();
     for (int i = 0; i < nb_search; i++) {
-        is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
+        is_found2 = simple_search(level_list, ValueToFind);
     }
     stopTimer();
 
