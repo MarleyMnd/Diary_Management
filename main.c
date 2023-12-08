@@ -42,7 +42,6 @@ int main() {
         }
     }
 
-    sleep(1);
     // printf("Values of the list :");
     // for (int i = 0; i < NumberOfCells; i++) {
     //     printf("[%d]  ", values[i]);
@@ -59,7 +58,6 @@ int main() {
     printf("Head inserted.\n\n");
 
     // Change the seed of 'random' generation (based on time)
-    sleep(1);
 
     int j = 1;
     for (int i = 1; i < NumberOfCells; i++) {
@@ -68,32 +66,37 @@ int main() {
     }
     printf("Insertion finished.\n\n");
 
-    sleep(2);
-
+    printf("List display:\n");
     printEntireList(level_list, max_list_level);
 
+    printf("\nAligned list:\n");
+
+    printAlignedList(level_list, max_list_level);
+
+    int valueToFind = 6;
+
     startTimer();
-    int is_found = dichotomic_search(level_list, 8, max_list_level, NumberOfCells);
+    int is_found = dichotomic_search(level_list, valueToFind, max_list_level, NumberOfCells);
     sleep(1);
     stopTimer();
 
     if (is_found == 1) {
-        printf("\n\nThe value is found.\n");
+        printf("\nThe value %d has been found.\n", valueToFind);
     } else {
-        printf("\n\nThe value is not found.\n");
+        printf("\nThe value %d has not been found.\n", valueToFind);
     }
     printf("Time taken: ");
     displayTime();
 
     startTimer();
-    int is_found2 = simple_search(level_list, 12, NumberOfCells);
+    int is_found2 = simple_search(level_list, valueToFind, NumberOfCells);
     sleep(1);
     stopTimer();
 
     if (is_found2 == 1) {
-        printf("\nThe value is found in first line.\n");
+        printf("\nThe value %d was found in first line.\n", valueToFind);
     } else {
-        printf("\nThe value is not found in first line.\n");
+        printf("\nThe value %d was not found in first line.\n", valueToFind);
     }
     printf("Time taken: ");
 
