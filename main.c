@@ -18,34 +18,22 @@ int main() {
     t_d_list level_list = createList(max_list_level);
 
     // Create an array of random values
-    int values[80000] = {};
-    for (int i = 0; i < NumberOfCells; i++) {
-        values[i] = i;
-    }
+    int *values = initialize_array_values(NumberOfCells);
 
     // Create an array of random number for the levels for the cells
-    int number_levels_cell[80000] = {};
-    for (int i = 0; i < NumberOfCells; i++) {
-        number_levels_cell[i] = 0;
-    }
-    for (int k = 2; k <= NumberOfCells/2 + 1; k = k*2) {
-        for (int i = k - 1; i <= NumberOfCells-k; i=i+k) {
-            if (i % 2 == 1 ) {
-                number_levels_cell[i]++;
-            }
-        }
-    }
+    int *number_levels_cell = initialize_array_levels(NumberOfCells);
 
     sleep(1);
-    // printf("Values of the list :");
-    // for (int i = 0; i < NumberOfCells; i++) {
-    //     printf("[%d]  ", values[i]);
-    // }
-    // printf("\n\nLevels :");
-    // for (int i = 0; i < NumberOfCells; i++) {
-    //     printf("[%d]  ", number_levels_cell[i]);
-    // }
-    // printf("\n\n");
+
+    printf("Values of the list :");
+    for (int i = 0; i < NumberOfCells; i++) {
+        printf("[%d]  ", values[i]);
+    }
+    printf("\n\nLevels :");
+    for (int i = 0; i < NumberOfCells; i++) {
+        printf("[%d]  ", number_levels_cell[i]);
+    }
+    printf("\n\n");
 
     // Create the first cell of the list
     insertCellHead(&level_list, /*value*/ values[0]+1, /*number of levels of the cell*/ number_levels_cell[0]+1);
@@ -61,14 +49,14 @@ int main() {
 
     sleep(1);
 
-    /*printf("Not aligned format :\n");
+    printf("Not aligned format :\n");
     printEntireList(level_list, max_list_level);
 
     printf("\n\n");
 
-    printf("Aligned format :\n");
-    printAlignedList(level_list, max_list_level);
-     */
+    /*printf("Aligned format :\n");
+    printAlignedList(level_list, max_list_level);*/
+
 
     int ValueToFind = 8756;
 

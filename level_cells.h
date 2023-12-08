@@ -20,4 +20,8 @@ typedef struct s_d_cell
 
 t_d_cell *createCell(int, int);
 
+int *initialize_array_values(int);
+
+int *initialize_array_levels(int);
+
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_CELLS_H
