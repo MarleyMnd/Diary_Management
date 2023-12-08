@@ -34,4 +34,8 @@ int dichotomic_search(t_d_list, int, int, int);
 
 void printAlignedList(t_d_list, int);
 
+void test_dichotomy(t_d_list, int, int, int);
+
+void test_simple_search(t_d_list, int, int, int);
+
 #endif //DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H

@@ -4,6 +4,7 @@
 
 #include "level_lists.h"
 #include "color_management.h"
+#include "timer.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -88,6 +89,7 @@ void printSpecLevelList(t_d_list level_list, int level) {
 
     t_d_cell *temp = level_list.head_array[level-1];
 
+    // Display the number of the level
     printf("[list head_%d @-]", level);
 
     // Display the value of each cell of the level until the end of the list
@@ -105,25 +107,9 @@ void printSpecLevelList(t_d_list level_list, int level) {
  * PARAMETERS : list | number of levels of the list
  */
 void printEntireList(t_d_list level_list, int max_level) {
-
     // Display the value of each cell of each level until the end of the list, for each level
     for (int i = 0; i < max_level; i++) {
-
         printSpecLevelList(level_list, i+1);
-
-        /*t_d_cell *temp = level_list.head_array[i];
-
-        // Display the beginning of level i
-        printf("[list head_%d @-]", i+1);
-
-        // Display the values
-        while (temp != NULL) {
-            printf("-->[ %d|@-]", temp->value);
-            temp = temp->pointer_array[i];
-        }
-
-        // Display the end of level i
-        printf("--> NULL\n");*/
     }
 }
 
@@ -182,7 +168,11 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
     return 0;
 }
 
-
+/*
+ *
+ * PRINT THE ENTIRE LIST ALIGNED
+ * PARAMETERS : list | number of levels of the list
+ */
 void printAlignedList(t_d_list level_list, int max_level) {
     int tot_values = pow(2, max_level-1)-1;
     for (int level = 0; level < max_level; level++) {
@@ -208,4 +198,50 @@ void printAlignedList(t_d_list level_list, int max_level) {
         }
         printf("--> NULL\n");
     }
+}
+
+/*
+ *
+ * TEST DICHOTOMY
+ * PARAMETERS : list | value to search | number of levels of the list | number of searches
+ */
+void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, int nb_search) {
+    int is_found;
+    int NumberOfCells = pow(2, max_list_level) - 1;
+    startTimer();
+    for (int i = 0; i < nb_search; i++) {
+        is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
+    }
+    stopTimer();
+
+    if (is_found == 1) {
+        printf("\n\nDichotomic search : The value %d is found.\n", ValueToFind);
+    } else {
+        printf("\n\nDichotomic search : The value %d is not found.\n", ValueToFind);
+    }
+    printf("Time taken to search %d times: ", nb_search);
+    displayTime();
+}
+
+/*
+ *
+ * TEST SIMPLE SEARCH
+ * PARAMETERS : list | value to search | number of levels of the list | number of searches
+ */
+void test_simple_search(t_d_list level_list, int ValueToFind, int max_list_level, int nb_search) {
+    int is_found2;
+    int NumberOfCells = pow(2, max_list_level) - 1;
+    startTimer();
+    for (int i = 0; i < nb_search; i++) {
+        is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
+    }
+    stopTimer();
+
+    if (is_found2 == 1) {
+        printf("\nSimple search : The value %d is found in first line.\n", ValueToFind);
+    } else {
+        printf("\nSimple search : The value %d is not found in first line.\n", ValueToFind);
+    }
+    printf("Time taken to search %d times: ", nb_search);
+    displayTime();
 }

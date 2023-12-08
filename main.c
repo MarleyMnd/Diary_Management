@@ -30,8 +30,10 @@ int main() {
     printf("Display arrays (value / level) ? (1/0)\n");
     scanf("%d", &display_arrays);
     if (display_arrays == 1) {
+        printf("\n");
         display_array_values(values, NumberOfCells);
         display_array_levels(number_levels_cell, NumberOfCells);
+        printf("\n");
     }
 
     printf("\n");
@@ -49,16 +51,18 @@ int main() {
     sleep(1);
 
     int print_option;
-    printf("Formats : \n1. Aligned \n2. Not aligned\n");
+    printf("Formats : \n0. Do not display the list \n1. Aligned \n2. Not aligned\n");
     scanf("%d", &print_option);
     printf("\n");
-    if (print_option != 1 && print_option != 2) {
-        printf("Wrong input. Default format : aligned.\n");
-        printAlignedList(level_list, max_list_level);
+    if (print_option == 0) {
+        printf("List not displayed.\n");
     } else if (print_option == 1) {
         printAlignedList(level_list, max_list_level);
     } else if (print_option == 2) {
         printEntireList(level_list, max_list_level);
+    } else {
+        printf("Wrong option.\n");
+        printf("Default: List not displayed.\n");
     }
 
     printf("\n\n");
@@ -67,37 +71,11 @@ int main() {
     printf("Enter the value to find :");
     scanf("%d", &ValueToFind);
 
-    int is_found;
-    int nb_search = 10000;
-    startTimer();
-    for (int i = 0; i < nb_search; i++) {
-        is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
-    }
-    stopTimer();
+    int nb_search = 1000000;                          // Number of searches to perform
 
-    if (is_found == 1) {
-        printf("\n\nDichotomic search : The value %d is found.\n", ValueToFind);
-    } else {
-        printf("\n\nDichotomic search : The value %d is not found.\n", ValueToFind);
-    }
-    printf("Time taken: ");
-    displayTime();
+    test_dichotomy(level_list, ValueToFind, max_list_level, nb_search);
 
-    int is_found2;
-    startTimer();
-    for (int i = 0; i < nb_search; i++) {
-        is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
-    }
-    stopTimer();
-
-    if (is_found2 == 1) {
-        printf("\nSimple search : The value %d is found in first line.\n", ValueToFind);
-    } else {
-        printf("\nSimple search : The value %d is not found in first line.\n", ValueToFind);
-    }
-    printf("Time taken: ");
-    displayTime();
+    test_simple_search(level_list, ValueToFind, max_list_level, nb_search);
 
     return 0;
-
 }
