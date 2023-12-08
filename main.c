@@ -76,9 +76,9 @@ int main() {
     stopTimer();
 
     if (is_found == 1) {
-        printf("\n\nDichotomic search : The value is found.\n");
+        printf("\n\nDichotomic search : The value %d is found.\n", ValueToFind);
     } else {
-        printf("\n\nDichotomic search : The value is not found.\n");
+        printf("\n\nDichotomic search : The value %d is not found.\n", ValueToFind);
     }
     printf("Time taken: ");
     displayTime();
@@ -89,9 +89,9 @@ int main() {
     stopTimer();
 
     if (is_found2 == 1) {
-        printf("\nSimple search : The value is found in first line.\n");
+        printf("\nSimple search : The value %d is found in first line.\n", ValueToFind);
     } else {
-        printf("\nSimple search : The value is not found in first line.\n");
+        printf("\nSimple search : The value %d is not found in first line.\n", ValueToFind);
     }
     printf("Time taken: ");
 
