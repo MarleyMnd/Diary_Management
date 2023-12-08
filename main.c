@@ -61,17 +61,22 @@ int main() {
 
     sleep(1);
 
-    printf("Not aligned format :\n");
+    /*printf("Not aligned format :\n");
     printEntireList(level_list, max_list_level);
 
     printf("\n\n");
 
     printf("Aligned format :\n");
     printAlignedList(level_list, max_list_level);
+     */
 
-    int ValueToFind = 100;
+    int ValueToFind = 8756;
+
     startTimer();
-    int is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
+    int is_found;
+    for (int i = 0; i < 10000; i++) {
+        is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
+    }
     sleep(1);
     stopTimer();
 
@@ -84,7 +89,10 @@ int main() {
     displayTime();
 
     startTimer();
-    int is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
+    int is_found2;
+    for (int i = 0; i < 10000; i++) {
+        is_found2 = simple_search(level_list, ValueToFind, NumberOfCells);
+    }
     sleep(1);
     stopTimer();
 
