@@ -1,7 +1,7 @@
 #include "level_lists.h"
+#include "color_management.h"
 #include <stdio.h>
 #include <math.h>
-#include "timer.h"
 #include <unistd.h>
 
 int main() {
@@ -27,7 +27,10 @@ int main() {
 
     // Display the values and the levels of the cells if the user wants
     int display_arrays;
-    printf("Display arrays (value / level) ? (1/0)\n");
+    printf("Display arrays (value / level) ? ");
+    AccentuationColor();
+    printf("(1/0)\n");
+    NormalColor();
     scanf("%d", &display_arrays);
     if (display_arrays == 1) {
         printf("\n");
@@ -52,9 +55,22 @@ int main() {
 
     // Choose the format of the list to display (none, aligned, not aligned)
     int print_option;
-    printf("Formats : \n0. Do not display the list \n1. Aligned \n2. Not aligned\n");
+    printf("Formats : \n");
+    AccentuationColor();
+    printf("0. ");
+    NormalColor();
+    printf("Do not display the list \n");
+    AccentuationColor();
+    printf("1. ");
+    NormalColor();
+    printf("Aligned \n");
+    AccentuationColor();
+    printf("2. ");
+    NormalColor();
+    printf("Not aligned\n");
     scanf("%d", &print_option);
     printf("\n");
+
     if (print_option == 0) {
         printf("List not displayed.\n");
     } else if (print_option == 1) {

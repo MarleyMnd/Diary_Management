@@ -220,7 +220,10 @@ void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, in
         printf("\n\nDichotomic search : The value %d is not found.\n", ValueToFind);
     }
     printf("Time taken to search %d times: ", nb_search);
+
+    AccentuationColor();
     displayTime();
+    NormalColor();
 }
 
 /*
@@ -243,5 +246,8 @@ void test_simple_search(t_d_list level_list, int ValueToFind, int max_list_level
         printf("\nSimple search : The value %d is not found in first line.\n", ValueToFind);
     }
     printf("Time taken to search %d times: ", nb_search);
+
+    AccentuationColor();
     displayTime();
+    NormalColor();
 }

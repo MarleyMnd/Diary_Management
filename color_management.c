@@ -20,3 +20,7 @@ void NormalColor() {
 void ErrorColor() {
     Color(12, 0);
 }
+
+void AccentuationColor() {
+    Color(14, 0);
+}

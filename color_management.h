@@ -9,4 +9,6 @@ void ErrorColor();
 
 void NormalColor();
 
+void AccentuationColor();
+
 #endif //DIARY_MANAGEMENT_PROJECT_COLOR_MANAGEMENT_H
