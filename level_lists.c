@@ -57,7 +57,7 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
  */
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
 
-    // Error management
+    // Error management (condition never achieved anyway)
     if (level_cell > list_levels) {
         ErrorColor();
         printf("\n /!\\ Error: nb level of the cell (%d) > nb level of the list (%d)  -->  cannot insert the cell\n\n", level_cell, list_levels);
@@ -116,6 +116,52 @@ void printEntireList(t_d_list level_list, int max_level) {
     }
 }
 
+/*
+ *
+ * PRINT THE ENTIRE LIST ALIGNED
+ * PARAMETERS : list | number of levels of the list
+ */
+void printAlignedList(t_d_list level_list, int max_level) {
+    // Determine the number of cells in the list
+    int tot_values = pow(2, max_level-1) - 1;
+
+    for (int level = 0; level < max_level; level++) {
+
+        // Initialize the temporary pointers
+        // First pointer at the head of the current level
+        t_d_cell *temp = level_list.head_array[level];
+        // Second pointer at the head of the first level
+        t_d_cell *temp0 = level_list.head_array[0];
+
+        printf("[list head_%d @-]", level + 1);
+        int j = 0;
+        while (temp != NULL) {
+
+            // As long as the value pointed by the first pointer is not the same as the value pointed by the second
+            // pointer, we print dashes to align the values
+            while (level != 0 && temp->value != temp0->value){
+                temp0 = temp0->pointer_array[0];
+                printf("----------");
+            }
+
+            // When values are equal, we print the value
+            printf("-->[ %d|@-]", temp->value);
+            temp = temp->pointer_array[level];
+            temp0 = temp0->pointer_array[0];
+            j++;
+        }
+
+        // Final alignment
+        if (j <= tot_values){
+            for (int k = j; k <= tot_values; k++){
+                printf("----------");
+            }
+        }
+
+        printf("--> NULL\n");
+    }
+}
+
 
 /*
  *
@@ -171,37 +217,6 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
     return 0;
 }
 
-/*
- *
- * PRINT THE ENTIRE LIST ALIGNED
- * PARAMETERS : list | number of levels of the list
- */
-void printAlignedList(t_d_list level_list, int max_level) {
-    int tot_values = pow(2, max_level-1)-1;
-    for (int level = 0; level < max_level; level++) {
-        t_d_cell *temp = level_list.head_array[level];
-        t_d_cell *temp0 = level_list.head_array[0];
-
-        printf("[list head_%d @-]", level + 1);
-        int j = 0;
-        while (temp != NULL) {
-            while (level != 0 && temp->value != temp0->value){
-                temp0 = temp0->pointer_array[0];
-                printf("----------");
-            }
-            printf("-->[ %d|@-]", temp->value);
-            temp = temp->pointer_array[level];
-            temp0 = temp0->pointer_array[0];
-            j++;
-        }
-        if (j <= tot_values){
-            for (int k = j; k <= tot_values; k++){
-                printf("----------");
-            }
-        }
-        printf("--> NULL\n");
-    }
-}
 
 /*
  *
