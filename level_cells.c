@@ -14,7 +14,6 @@
 t_d_cell *createCell(int val, int levels) {
 
     t_d_cell *new_cell;
-
     new_cell = (t_d_cell*) malloc(1*sizeof(t_d_cell));
 
     new_cell->value = val;

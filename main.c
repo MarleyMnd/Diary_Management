@@ -5,10 +5,12 @@
 #include <unistd.h>
 
 int main() {
-    // Choose maximum depth of the list
-    int max_list_level;
-    printf("Enter the max number of levels of the list :");
-    scanf("%d", &max_list_level);
+    // Choose maximum depth of the list + make sure it is greater than 0 and smaller than 15
+    int max_list_level = 0;
+    while (max_list_level <= 0 || max_list_level > 14) {
+        printf("Enter the max number of levels of the list (1-14):");
+        scanf("%d", &max_list_level);
+    }
 
     // Determine the number of cells of the list
     int NumberOfCells = pow(2,max_list_level) - 1;

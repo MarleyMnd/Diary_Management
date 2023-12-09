@@ -31,7 +31,7 @@ t_d_list createList(int nb_max_head) {
  * PARAMETERS : list | value | number of levels of the cell
  */
 void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
-    // Create a temporary pointer of type cell
+    // Create a new cell
     t_d_cell *new_cell;
     new_cell = createCell(val, cell_levels);
 
@@ -42,6 +42,8 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
             new_cell->pointer_array[i] = NULL;
             level_list->head_array[i] = new_cell;
         } else {
+            // Condition above always reached if the list is empty (i.e. if the head is NULL)
+            // Unnecessary else statement
             new_cell->pointer_array[i] = level_list->head_array[i];
             level_list->head_array[i] = new_cell;
         }
@@ -54,6 +56,7 @@ void insertCellHead(t_d_list *level_list, int val, int cell_levels) {
  * PARAMETERS : list | value | number of levels of the cell | number of levels of the list
  */
 void insertCellAscendingOrder(t_d_list *level_list, int val, int level_cell, int list_levels) {
+
     // Error management
     if (level_cell > list_levels) {
         ErrorColor();
