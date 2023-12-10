@@ -66,6 +66,7 @@ We tested for 16 levels (= 65535 nodes): the complete run took over 40 minutes f
 > Insertion finished.
 >
 > Formats :
+> 
 > 0. Do not display the list
 > 1. Aligned
 > 2. Not aligned
