@@ -1,7 +1,5 @@
 # DIARY MANAGEMENT
 
-***
-
 [Github Page of the project](https://github.com/MarleyMnd/Diary_Management)
 
 ## Aim:
