@@ -270,9 +270,9 @@ void test_simple_search(t_d_list level_list, int ValueToFind, int nb_search) {
     stopTimer();
 
     if (is_found2 == 1) {
-        printf("\nSimple search : The value %d is found in first line.\n", ValueToFind);
+        printf("\nLinear search : The value %d is found in first line.\n", ValueToFind);
     } else {
-        printf("\nSimple search : The value %d is not found in first line.\n", ValueToFind);
+        printf("\nLinear search : The value %d is not found in first line.\n", ValueToFind);
     }
     printf("Time taken to search %d times: ", nb_search);
 
