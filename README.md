@@ -19,7 +19,7 @@ We tested for 16 levels (= 65535 nodes): the complete run took over 40 minutes f
 
 ***
 
-- Example for 3 levels:
+- Example for 3 levels (_zoom out for alignment_):
 
 >`[list head_1 @-]-->[ 1|@-]-->[ 2|@-]-->[ 3|@-]-->[ 4|@-]-->[ 5|@-]-->[ 6|@-]-->[ 7|@-]--> NULL`
 >
