@@ -2,6 +2,8 @@
 
 ***
 
+[Github Page of the project](https://github.com/MarleyMnd/Diary_Management)
+
 ## Aim:
 
 This program creates **level lists** using C language. It measures the time taken to look for a value in a level list using two different methods.
