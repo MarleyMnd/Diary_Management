@@ -7,8 +7,8 @@
 int main() {
     // Choose maximum depth of the list + make sure it is greater than 0 and smaller than 15
     int max_list_level = 0;
-    while (max_list_level <= 0 || max_list_level > 14) {
-        printf("Enter the max number of levels of the list (1-14):");
+    while (max_list_level <= 0) {
+        printf("Enter the max number of levels of the list (1-15 max. recommended):");
         scanf("%d", &max_list_level);
     }
 
@@ -31,7 +31,7 @@ int main() {
     int display_arrays;
     printf("Display arrays (value / level) ? ");
     AccentuationColor();
-    printf("(1/0)\n");
+    printf("(Y:1/N:0)\n");
     NormalColor();
     scanf("%d", &display_arrays);
     if (display_arrays == 1) {

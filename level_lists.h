@@ -6,7 +6,7 @@
 #define DIARY_MANAGEMENT_PROJECT_LEVEL_LISTS_H
 
 #include "level_cells.h"
-#define MAX_SIZE 15
+#define MAX_SIZE 30
 
 /*
  *
