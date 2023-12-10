@@ -123,7 +123,7 @@ void printEntireList(t_d_list level_list, int max_level) {
  */
 void printAlignedList(t_d_list level_list, int max_level) {
     // Determine the number of cells in the list
-    int tot_values = pow(2, max_level-1) - 1;
+    int tot_values = (int)pow(2, max_level-1) - 1;
 
     for (int level = 0; level < max_level; level++) {
 
@@ -166,7 +166,7 @@ void printAlignedList(t_d_list level_list, int max_level) {
 /*
  *
  * SIMPLE SEARCH (first level only)
- * PARAMETERS : list | value to search | number of cells of the list
+ * PARAMETERS : list | value to search
  */
 int simple_search(t_d_list level_list, int val) {
     t_d_cell *temp = level_list.head_array[0];
@@ -187,7 +187,7 @@ int simple_search(t_d_list level_list, int val) {
 /*
  *
  * DICHOTOMIC SEARCH
- * PARAMETERS : list | value to search | number of levels of the list | number of cells of the list
+ * PARAMETERS : list | value to search | number of levels of the list
  */
 int dichotomic_search(t_d_list level_list, int val, int max_level) {
     // Start the search at the deepest level
@@ -231,13 +231,19 @@ int dichotomic_search(t_d_list level_list, int val, int max_level) {
  */
 void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, int nb_search) {
     int is_found;
+
+    // Start the timer
     startTimer();
+
     for (int i = 0; i < nb_search; i++) {
         is_found = dichotomic_search(level_list, ValueToFind, max_list_level);
     }
+
+    // Stop the timer
     stopTimer();
 
     if (is_found == -2) {
+        // Error management
         printf("\n\nDichotomic search : Error\n");
     } else if (is_found == 1){
         printf("\n\nDichotomic search : The value %d is found.\n", ValueToFind);

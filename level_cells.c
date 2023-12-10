@@ -18,6 +18,7 @@ t_d_cell *createCell(int val, int levels) {
 
     new_cell->value = val;
 
+    // Initialize each pointer to NULL
     for (int i = 0; i < levels; i++) {
         new_cell->pointer_array[i] = NULL;
     }

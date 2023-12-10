@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 int main() {
-    // Choose maximum depth of the list + make sure it is greater than 0 and smaller than 15
+    // Choose maximum depth of the list + make sure it is greater than 0
     int max_list_level = 0;
     while (max_list_level <= 0) {
         printf("Enter the max number of levels of the list (1-15 max. recommended):");
@@ -13,7 +13,7 @@ int main() {
     }
 
     // Determine the number of cells of the list
-    int NumberOfCells = pow(2,max_list_level) - 1;
+    int NumberOfCells = (int)pow(2,max_list_level) - 1;
     printf("Number of cells : %d\n\n", NumberOfCells);
 
     // Create the list (empty)
