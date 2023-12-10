@@ -189,34 +189,40 @@ int simple_search(t_d_list level_list, int val) {
  * DICHOTOMIC SEARCH
  * PARAMETERS : list | value to search | number of levels of the list | number of cells of the list
  */
-int dichotomic_search(t_d_list level_list, int val, int max_level, int number_cells) {
+int dichotomic_search(t_d_list level_list, int val, int max_level) {
+    // Start the search at the deepest level
     int level = max_level - 1;
     t_d_cell *temp = level_list.head_array[level];
 
-    for (int i = 0; i < number_cells && temp != NULL; i++) {
+    // We iterate over the cells of the list until the value is found or until we reach the end of the list
+    while (temp->value != val && level >= 0) {
 
-        while (temp->pointer_array[level] != NULL && temp->value < val) {
-            temp = temp->pointer_array[level];
+        // Check the relation between the value pointed by the pointer and the value we are looking for
+        // Either the value is before the cell pointed by the pointer in the list, or after
+        if (temp->value < val) {
+
+            // Check if the next cell of the level above is greater than the value we are looking for
+            if (temp->pointer_array[level-1]->value > val) {
+                // If so, we go up one level (if the value is the value we're looking for, the while loop would have already stopped)
+                level--;
+            } else {
+                // Else, we go to the next cell of the level above
+                temp = temp->pointer_array[--level];
+            }
+        } else {
+            // The value is before the cell pointed by the pointer in the list : we go to the head of the level above
+            temp = level_list.head_array[--level];
         }
-
-
-        if (temp->value == val) {
-            return 1;
-        }
-
-        level--;
-        temp = level_list.head_array[level];
-
-        if (level < 0) {
-            return 0;
-        }
-
-        temp = temp->pointer_array[level];
     }
 
-    return 0;
+    // Either the value is found, or we reached the end of the seeking process
+    if (temp->value == val) {
+        return 1;
+    } else if (temp->pointer_array[level] == NULL || level < 0) {
+        return 0;
+    }
+    return -2;
 }
-
 
 /*
  *
@@ -225,14 +231,15 @@ int dichotomic_search(t_d_list level_list, int val, int max_level, int number_ce
  */
 void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, int nb_search) {
     int is_found;
-    int NumberOfCells = pow(2, max_list_level) - 1;
     startTimer();
     for (int i = 0; i < nb_search; i++) {
-        is_found = dichotomic_search(level_list, ValueToFind, max_list_level, NumberOfCells);
+        is_found = dichotomic_search(level_list, ValueToFind, max_list_level);
     }
     stopTimer();
 
-    if (is_found == 1) {
+    if (is_found == -2) {
+        printf("\n\nDichotomic search : Error\n");
+    } else if (is_found == 1){
         printf("\n\nDichotomic search : The value %d is found.\n", ValueToFind);
     } else {
         printf("\n\nDichotomic search : The value %d is not found.\n", ValueToFind);

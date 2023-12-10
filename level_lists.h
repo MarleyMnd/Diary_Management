@@ -30,7 +30,7 @@ void insertCellAscendingOrder(t_d_list *, int, int, int);
 
 int simple_search(t_d_list level_list, int val);
 
-int dichotomic_search(t_d_list, int, int, int);
+int dichotomic_search(t_d_list, int, int);
 
 void printAlignedList(t_d_list, int);
 
