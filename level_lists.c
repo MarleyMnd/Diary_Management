@@ -258,10 +258,15 @@ void test_dichotomy(t_d_list level_list, int ValueToFind, int max_list_level, in
  */
 void test_simple_search(t_d_list level_list, int ValueToFind, int nb_search) {
     int is_found2;
+
+    // Start the timer
     startTimer();
+
     for (int i = 0; i < nb_search; i++) {
         is_found2 = simple_search(level_list, ValueToFind);
     }
+
+    // Stop the timer
     stopTimer();
 
     if (is_found2 == 1) {
@@ -271,6 +276,7 @@ void test_simple_search(t_d_list level_list, int ValueToFind, int nb_search) {
     }
     printf("Time taken to search %d times: ", nb_search);
 
+    // Display the time taken to perform the search
     AccentuationColor();
     displayTime();
     NormalColor();

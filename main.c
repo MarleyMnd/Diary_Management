@@ -82,7 +82,7 @@ int main() {
         printf("Default: List not displayed.\n");
     }
 
-    printf("\n\n");
+    printf("\n");
 
     int ValueToFind;
     printf("Enter the value to find :");
